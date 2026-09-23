@@ -115,3 +115,26 @@ function showMessage(message) {
 
 updateBalance();
 loadUser();
+
+async function startMining() {
+    try {
+        const response = await fetch(
+            `${API_URL}/api/mine/${userId}`,
+            { method: "POST" }
+        );
+
+        const data = await response.json();
+
+        if (data.success) {
+            balance = data.balance;
+            updateBalance();
+            showMessage(`⛏️ +${data.mining} Points Added!`);
+        } else {
+            showMessage("⏳ " + data.message);
+        }
+
+    } catch (error) {
+        console.error(error);
+        showMessage("❌ Server connection failed");
+    }
+}

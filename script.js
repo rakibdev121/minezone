@@ -1,3 +1,4 @@
+console.log("MINEZONE VERSION 4 LOADED");
 const tg = window.Telegram.WebApp;
 
 tg.ready();

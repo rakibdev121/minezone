@@ -53,24 +53,7 @@ async function claimBonus() {
     }
 }
 
-mineBtn.addEventListener("click", function () {
-    if (!miningAvailable) {
-        showMessage("⏳ Mining is not available yet!");
-        return;
-    }
-
-    balance += 10;
-    updateBalance();
-
-    miningAvailable = false;
-
-    mineBtn.textContent = "Mining Completed ✓";
-    mineBtn.style.opacity = "0.6";
-
-    showMessage("⛏️ +10 Points Added!");
-
-    startTimer();
-});
+mineBtn.addEventListener("click", startMining);
 
 function startTimer() {
     let seconds = 24 * 60 * 60;
